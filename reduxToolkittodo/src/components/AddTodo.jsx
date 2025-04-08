@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { addTodo } from '../features/todo/todoSlice'
-
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../features/todo/todoSlice';
 
 function AddTodo() {
-
-    const [input, setInput] = useState('')
-    const dispatch = useDispatch()
+    const [input, setInput] = useState('');
+    const dispatch = useDispatch();
 
     const addTodoHandler = (e) => {
-        e.preventDefault()
-        dispatch(addTodo(input))
-        setInput('')
-    }
+        e.preventDefault();
+        if (input.trim()) { // Ensures input is not empty or only spaces
+            dispatch(addTodo(input));
+            setInput('');
+        }
+    };
 
     return (
         <form onSubmit={addTodoHandler} className="space-x-3 mt-12">
@@ -26,11 +26,12 @@ function AddTodo() {
             <button
                 type="submit"
                 className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                disabled={!input.trim()} // Disables button when input is empty
             >
                 Add Todo
             </button>
         </form>
-    )
+    );
 }
 
-export default AddTodo
+export default AddTodo;

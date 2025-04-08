@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeTodo } from '../features/todo/todoSlice';
-import './index.css';
+
 
 function Todos() {
   const todos = useSelector(state => state.todos);
@@ -19,7 +19,8 @@ function Todos() {
             <div className="text-black font-medium">{todo.text}</div>
             <button
               onClick={() => dispatch(removeTodo(todo.id))}
-              className='text-white bg-red-400 border-0 py-1 px-4 focus:outline-none hover:bg-red-700 rounded-md'
+            //   className='text-white bg-red-400 border-0 py-1 px-4 focus:outline-none hover:bg-red-700 rounded-md'
+            className='text-white bg-red-400 border-0 py-1 px-4 focus:outline-none hover:bg-red-700 rounded-md'
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
